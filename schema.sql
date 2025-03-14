@@ -1,8 +1,8 @@
-DROP DATABASE IF EXISTS exam;
+DROP DATABASE IF EXISTS ecommerce;
 
-CREATE DATABASE exam;  /* create database instance */
+CREATE DATABASE ecommerce;  /* create database instance */
 
-USE exam;
+USE ecommerce;
 
 -- CREATE USER 'dbuser'@'localhost' IDENTIFIED BY 'dbuser';  /* create database user */
 -- GRANT ALL PRIVILEGES ON exam.* TO 'dbuser'@'localhost';   /* grant full privileges to user */
@@ -21,6 +21,24 @@ CREATE TABLE users (
     login VARCHAR(50) UNIQUE,
     email VARCHAR(50) DEFAULT NULL,
     user_type VARCHAR(50) DEFAULT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE customers (
+	id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    firstname VARCHAR(50) NOT NULL,
+    lastname VARCHAR(50) DEFAULT NULL,
+    login VARCHAR(50) UNIQUE,
+    email VARCHAR(50) DEFAULT NULL,
+    street_address VARCHAR(50) DEFAULT NULL,
+    city VARCHAR(2) DEFAULT NULL,
+    state VARCHAR(10) DEFAULT NULL,
+    zipcode BIGINT DEFAULT NULL,
+    billing_street_address VARCHAR(50) DEFAULT NULL,
+    billing_city VARCHAR(50) DEFAULT NULL,
+    billing_state VARCHAR(2) DEFAULT NULL,
+    billing_zipcode BIGINT DEFAULT NULL,
+    payment_method VARCHAR(50) DEFAULT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
