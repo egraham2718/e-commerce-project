@@ -1,0 +1,23 @@
+{
+  "name": "e-commerce",
+  "version": "1.0.0",
+  "description": "Spring 2025 e-commerce system for class project.",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/egraham2718/e-commerce-project.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/egraham2718/e-commerce-project/issues"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  },
+  "homepage": "https://github.com/egraham2718/e-commerce-project#readme"
+}
