@@ -50,6 +50,23 @@ CREATE TABLE user_permissions (
     foreign key (user_id) references users(id),
     foreign key (permission_id) references permissions(id)
 );
+
+CREATE TABLE products (
+	product_id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    -- upc_code BIGINT NOT NULL,
+    product_name VARCHAR(250) DEFAULT NULL,
+    product_description VARCHAR(500) DEFAULT NULL,
+    price DECIMAL(10,2) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE orders (
+
+);
+
+CREATE TABLE inventory (
+
+);
 -- ====================== INSERT ================================
 INSERT INTO permissions (name) values("view users"), ("update users"), ("delete users");
 
