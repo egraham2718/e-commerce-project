@@ -17,6 +17,7 @@
     "url": "https://github.com/egraham2718/e-commerce-project/issues"
   },
   "dependencies": {
+    "ejs": "^3.1.10",
     "express": "^4.21.2",
     "mysql2": "^3.14.0"
   },
