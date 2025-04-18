@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>This is User's page</h1>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            alert('page is loaded');
+            getUsers();
+        });
+
+        async function getUsers() {
+            try {
+                const response = await fetch('http://localhost8001/api/users');
+                const data = await response.json();
+                if(data.success == true) {
+                    console.log(data.message);
+                }
+            } catch (error) {
+
+            }
+        }
+    </script>
+</body>
+</html>
