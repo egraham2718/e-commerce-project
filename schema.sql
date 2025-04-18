@@ -61,7 +61,7 @@ CREATE TABLE products (
 );
 
 CREATE TABLE orders (
-
+    
 );
 
 CREATE TABLE inventory (
