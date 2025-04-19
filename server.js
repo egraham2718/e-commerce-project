@@ -90,6 +90,28 @@ app.get('/api/users', async (req, res) => {
         message: await db.getUsers()
     })
 });
+// get user with id
+app.get('/api/user/:id', async (req, res) => {
+    res.send({
+        success: true,
+        message: await db.getUser(req.params.id)
+    })
+});
+
+// update user
+// *** TEMPORARY ***
+// For testing just pass in the data in a query string
+app.get('/api/updateUser/:id', async (req, res) => {
+    const id = req.params.id;
+    const firstname = req.query.firstname;
+    const lastname = req.query.lastname;
+    const login = req.query.login;
+    const email = req.query.email;
+    res.send({
+        success: true,
+        message: await db.updateUser(id, firstname, lastname, login, email)
+    })
+});
 
 // get permissions
 app.get('/api/permissions', async (req, res) => {
