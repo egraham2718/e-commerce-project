@@ -61,8 +61,9 @@ CREATE TABLE products (
 );
 
 CREATE TABLE orders (
-	order_id BIGINT NOT NULL,
-    order_sequence BIGINT NOT NULL
+	order_id BIGINT PRIMARY KEY NOT NULL,
+    order_sequence BIGINT NOT NULL,
+    customer_id BIGINT
 );
 
 CREATE TABLE inventory (
