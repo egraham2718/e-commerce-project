@@ -5,7 +5,7 @@ CREATE DATABASE ecommerce;  /* create database instance */
 USE ecommerce;
 
 -- CREATE USER 'dbuser'@'localhost' IDENTIFIED BY 'dbuser';  /* create database user */
--- GRANT ALL PRIVILEGES ON exam.* TO 'dbuser'@'localhost';   /* grant full privileges to user */
+-- GRANT ALL PRIVILEGES ON ecommerce.* TO 'dbuser'@'localhost';   /* grant full privileges to user */
 -- FLUSH PRIVILEGES; 
 
 CREATE TABLE permissions (
@@ -61,11 +61,12 @@ CREATE TABLE products (
 );
 
 CREATE TABLE orders (
-    
+	order_id BIGINT NOT NULL,
+    order_sequence BIGINT NOT NULL
 );
 
 CREATE TABLE inventory (
-
+	inventory_id BIGINT PRIMARY KEY AUTO_INCREMENT
 );
 -- ====================== INSERT ================================
 INSERT INTO permissions (name) values("view users"), ("update users"), ("delete users");
