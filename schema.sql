@@ -19,6 +19,7 @@ CREATE TABLE users (
     firstname VARCHAR(50) NOT NULL,
     lastname VARCHAR(50) DEFAULT NULL,
     login VARCHAR(50) UNIQUE,
+    password VARCHAR(50),
     email VARCHAR(50) DEFAULT NULL,
     user_type VARCHAR(50) DEFAULT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
@@ -72,13 +73,13 @@ CREATE TABLE inventory (
 -- ====================== INSERT ================================
 INSERT INTO permissions (name) values("view users"), ("update users"), ("delete users");
 
-INSERT INTO users (firstname, lastname, login, email) 
+INSERT INTO users (firstname, lastname, login, password, email) 
 	values
-		("User1Name", "User1Surname", "user_1", "user1@user1.com"),
-		("User2Name", "User2Surname", "user_2", "user2@user2.com"),
-		("User3Name", "User3Surname", "user_3", "user3@user3.com"),
-        ("User4Name", "User4Surname", "user_4", "user4@user4.com"),
-        ("User5Name", "User5Surname", "user_5", "user5@user5.com");
+		("User1Name", "User1Surname", "user_1", "password", "user1@user1.com"),
+		("User2Name", "User2Surname", "user_2", "password", "user2@user2.com"),
+		("User3Name", "User3Surname", "user_3", "password", "user3@user3.com"),
+        ("User4Name", "User4Surname", "user_4", "password", "user4@user4.com"),
+        ("User5Name", "User5Surname", "user_5", "password", "user5@user5.com");
         
 INSERT INTO user_permissions (user_id, permission_id)
 	VALUES

@@ -30,9 +30,9 @@ async function getUser(id) {
     return rows[0];
 }
 
-async function updateUser(id, firstname, lastname, login, email) {
+async function updateUser(id, firstname, lastname, login, password, email) {
     const [rows] = await pool.query('UPDATE users \
-                                     SET firstname = ?, lastname = ?, login = ?, email = ? \
+                                     SET firstname = ?, lastname = ?, login = ?, password = ? email = ? \
                                      WHERE id = ?;', 
                                     [firstname, lastname, login, email, id]);
     return rows[0];
@@ -41,6 +41,12 @@ async function updateUser(id, firstname, lastname, login, email) {
 async function deleteUser(id) {
     const result = await pool.query("DELETE FROM users WHERE id = ?", [id]);
     return result;
+}
+
+// Login user
+async function loginUser(login, password) {
+    const [rows] = await pool.query('SELECT * FROM users WHERE login = ? AND password = ?;', [login, password]);
+    return rows[0];
 }
 
 //////////////////////////////
@@ -126,4 +132,4 @@ async function getPermissions() {
 
 //console.log(await deleteUser(6));
 
-export {getUsers, getUser, createUser, updateUser, deleteUser, getPermission, getPermissions}
+export {getUsers, getUser, createUser, updateUser, deleteUser, loginUser, getPermission, getPermissions}

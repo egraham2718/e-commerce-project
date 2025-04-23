@@ -20,7 +20,11 @@
   "dependencies": {
     "ejs": "^3.1.10",
     "express": "^4.21.2",
-    "mysql2": "^3.14.0"
+    "fs": "^0.0.1-security",
+    "mysql2": "^3.14.0",
+    "path": "^0.12.7",
+    "sequelize": "^6.37.7",
+    "sequelize-cli": "^6.6.2"
   },
   "homepage": "https://github.com/egraham2718/e-commerce-project#readme",
   "devDependencies": {
