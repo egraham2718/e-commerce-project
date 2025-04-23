@@ -37,6 +37,19 @@ app.get('/orders', async (req, res) => {
 app.get('/login', async (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'login.html'));
 });
+app.post('/submitLogin', async (req, res) => {
+    const login = req.body.login;
+    const password = req.body.password;
+    const result = await db.loginUser(login, password);
+    console.log("Result: ", result);
+    if(result) {
+        res.sendFile(path.join(__dirname, 'public', 'login_success.html'));
+    }
+    else {
+        res.sendFile(path.join(__dirname, 'public', 'login_failure.html'));
+    }
+    
+});
 
 // account
 app.get('/account', async (req, res) => {
@@ -101,16 +114,37 @@ app.get('/api/user/:id', async (req, res) => {
 // update user
 // *** TEMPORARY ***
 // For testing just pass in the data in a query string
-app.get('/api/updateUser/:id', async (req, res) => {
-    const id = req.params.id;
-    const firstname = req.query.firstname;
-    const lastname = req.query.lastname;
-    const login = req.query.login;
-    const email = req.query.email;
+//app.get('/api/updateUser/:id', async (req, res) => {
+    // const id = req.body.id;
+    // const firstname = req.body.firstname;
+    // const lastname = req.body.lastname;
+    // const login = req.body.login;
+    // const email = req.body.email;
+    // res.send({
+    //     success: true,
+    //     message: await db.updateUser(id, firstname, lastname, login, email)
+    // })
+//});
+app.post('/api/updateUser', async (req, res) => {
+    const id = req.body.id;
+    const firstname = req.body.firstname;
+    const lastname = req.body.lastname;
+    const login = req.body.login;
+    const password = req.body.password;
+    const email = req.body.email;
     res.send({
         success: true,
-        message: await db.updateUser(id, firstname, lastname, login, email)
+        message: await db.updateUser(id, firstname, lastname, login, password, email)
     })
+});
+
+app.get('/api/userForm', async (req, res) => {
+    const user = await db.getUser(2);
+
+    const data = {id: user.id, firstname: user.firstname, lastname: user.lastname, login: user.login, email: user.email};
+    console.log('data: ', data);
+
+    res.render('update_user_test.ejs', data);
 });
 
 // get permissions
