@@ -32,9 +32,9 @@ async function getUser(id) {
 
 async function updateUser(id, firstname, lastname, login, password, email) {
     const [rows] = await pool.query('UPDATE users \
-                                     SET firstname = ?, lastname = ?, login = ?, password = ? email = ? \
+                                     SET firstname = ?, lastname = ?, login = ?, password = ?, email = ? \
                                      WHERE id = ?;', 
-                                    [firstname, lastname, login, email, id]);
+                                    [firstname, lastname, login, password, email, id]);
     return rows[0];
 }
 
