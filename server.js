@@ -141,7 +141,13 @@ app.post('/api/updateUser', async (req, res) => {
 app.get('/api/userForm', async (req, res) => {
     const user = await db.getUser(2);
 
-    const data = {id: user.id, firstname: user.firstname, lastname: user.lastname, login: user.login, email: user.email};
+    const data = {id: user.id, 
+                  firstname: user.firstname, 
+                  lastname: user.lastname, 
+                  login: user.login, 
+                  password: user.password, 
+                  email: user.email
+                };
     console.log('data: ', data);
 
     res.render('update_user_test.ejs', data);
