@@ -101,15 +101,33 @@ async function getPermissions() {
 // Products table operations
 //////////////////////////////
 
-// createProduct(...)
+export async function createProduct(productName, productDescription, price, creatdeAt) {
+    const result = await pool.query("INSERT INTO products (product_name, product_description, price, created_at) VALUES(?, ?, ?, ?)", 
+                                    [productName, productDescription, price, creatdeAt]);
+}
 
-// getProducts()
+export async function getProducts() {
+    const [rows] = await pool.query('SELECT * FROM products');
+    return rows;
+}
 
-// getProduct(id)
+export async function getProduct(id) {
+    const [rows] = await pool.query('SELECT * FROM products WHERE id = ?;', [id]);
+    return rows[0];
+}
 
-// updateProduct(id)
+export async function updateProduct(id, productName, productDescription, price) {
+    const [rows] = await pool.query('UPDATE products \
+                                     SET product_name = ?, product_description = ?, price = ? \
+                                     WHERE id = ?;', 
+                                    [productName, productDescription, price, id]);
+    return rows[0];
+}
 
-// deleteProduct(id)
+export async function deleteProduct(id) {
+    const result = await pool.query("DELETE FROM products WHERE id = ?", [id]);
+    return result;
+}
 
 //////////////////////////////
 // Inventory table operations
@@ -124,12 +142,5 @@ async function getPermissions() {
 // updateInventory(id)
 
 // deleteInventory(id)
-
-//console.log(await getUser(1));
-
-//console.log(await createUser('NameTest1', 'SurnameTest1', 'loginTest1', 'test1@test.com'));
-//console.log(await getUser(6));
-
-//console.log(await deleteUser(6));
 
 export {getUsers, getUser, createUser, updateUser, deleteUser, loginUser, getPermission, getPermissions}

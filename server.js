@@ -112,19 +112,6 @@ app.get('/api/user/:id', async (req, res) => {
 });
 
 // update user
-// *** TEMPORARY ***
-// For testing just pass in the data in a query string
-//app.get('/api/updateUser/:id', async (req, res) => {
-    // const id = req.body.id;
-    // const firstname = req.body.firstname;
-    // const lastname = req.body.lastname;
-    // const login = req.body.login;
-    // const email = req.body.email;
-    // res.send({
-    //     success: true,
-    //     message: await db.updateUser(id, firstname, lastname, login, email)
-    // })
-//});
 app.post('/api/updateUser', async (req, res) => {
     const id = req.body.id;
     const firstname = req.body.firstname;
